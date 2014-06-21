@@ -39,6 +39,8 @@ class AjaxController
             $result['packages'][] = array(
                 'prettyName'    => $currentPackage->getPrettyName(),
                 'prettyVersion' => $currentPackage->getPrettyVersion(),
+                'releaseDate'   => $currentPackage->getReleaseDate(),
+                'license'       => $currentPackage->getLicense(),
             );
         }
 
