@@ -26,6 +26,12 @@
     <section id="main" role="main">
         <div ng-controller="OverviewCtrl" id="overview">
             <h2>{{project.name}}</h2>
+            <div>
+                <span>all used licenses:</span>
+                <div>
+                    <span ng-repeat="license in usedLicenses">{{license}}{{$last ? '' : ', '}}</span>
+                </div>
+            </div>
             <table>
                 <thead>
                 <tr>

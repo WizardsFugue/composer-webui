@@ -7,6 +7,18 @@ composerWebuiApp.controller('OverviewCtrl', function ($scope, $http) {
     $http.get('api/').success(function(data) {
         $scope.project  = { "name":data.name};
         $scope.packages = data.packages;
+
+        var licenses = {};
+        angular.forEach($scope.packages, function(obj, key) {
+            angular.forEach(obj.license, function(value) {
+                licenses[value] = 1;
+            })
+        });
+        var usedLicenses = []
+        for (var key in licenses) {
+            usedLicenses.push(key);
+        }
+        $scope.usedLicenses = usedLicenses;
     });
 });
 
