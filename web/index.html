@@ -1,0 +1,42 @@
+<html ng-app="composerWebuiApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        section.sidebar {
+            float: left;
+            margin: 0 15px 15px 0;
+        }
+        footer {
+            clear: both;
+            padding: 1px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <header>
+        <h1>Composer WebUI</h1>
+    </header>
+    <section id="nav" class="sidebar" role="navigation">
+        <nav>
+            
+        </nav>
+    </section>
+    <section id="main" role="main">
+        <div ng-controller="OverviewCtrl" id="overview">
+            <h2>{{project.name}}</h2>
+            <table>
+                <tr ng-repeat="package in packages">
+                    <td>{{prettyName}}</td>
+                    <td>{{prettyVersion}}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </section>
+    <footer>
+        
+    </footer>
+</div>
+</body>
