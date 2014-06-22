@@ -31,6 +31,14 @@
                 <div>
                     <span ng-repeat="license in usedLicenses">{{license}}{{$last ? '' : ', '}}</span>
                 </div>
+                <br/><br/>
+                <span>validation result(errors):</span>
+                <ul>
+                    <li ng-repeat="message in project.validationResult.info" style="background-color:greenyellow;">{{message}}</li>
+                    <li ng-repeat="message in project.validationResult.warnings" style="background-color:orange;">{{message}}</li>
+                    <li ng-repeat="message in project.validationResult.publishErrors" style="background-color:orangered;">{{message}}</li>
+                    <li ng-repeat="message in project.validationResult.errors" style="background-color:red;">{{message}}</li>
+                </ul>
             </div>
             <table>
                 <thead>

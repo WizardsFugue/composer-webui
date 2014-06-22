@@ -5,6 +5,7 @@ use Composer\IO\NullIO;
 use Composer\IO\BufferIO;
 use Rabus\Composer\WebUI\Controller\MainController;
 use Rabus\Composer\WebUI\Controller\AjaxController;
+use Rabus\Composer\WebUI\Controller\SimpleAjaxController;
 use Silex\Application;
 use Silex\Provider\ServiceControllerServiceProvider;
 
@@ -38,9 +39,15 @@ $app['controllers.ajax'] = function ($app)
     return new AjaxController($app['composer']);
 };
 
+$app['controllers.simpleajax'] = function ($app)
+{
+    return new SimpleAjaxController();
+};
+
 // Routes
 $app->get('/', 'controllers.main:indexAction');
 $app->get('/api/', 'controllers.ajax:indexAction');
+$app->get('/api/validate', 'controllers.simpleajax:validateAction');
 
 // Run it!
 $app->run();
