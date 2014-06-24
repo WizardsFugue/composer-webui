@@ -7,6 +7,9 @@
             float: left;
             margin: 0 15px 15px 0;
         }
+        section#main {
+            display: inline-block;
+        }
         footer {
             clear: both;
             padding: 1px;
@@ -14,16 +17,24 @@
     </style>
 </head>
 <body>
-<div id="container">
+<div id="container" ng-controller="TabsCtrl">
     <header>
         <h1>Composer WebUI</h1>
     </header>
     <section id="nav" class="sidebar" role="navigation">
         <nav>
             
+            <ul>
+                <li ng-repeat="tab in tabs"
+                    ng-class="{active:isActiveTab(tab.url)}"
+                    ng-click="onClickTab(tab)">{{tab.title}}</li>
+            </ul>
         </nav>
     </section>
     <section id="main" role="main">
+        <div ng-include="currentTab"></div>
+    </section>
+    <script type="text/ng-template" id="overview.tpl.html">
         <div ng-controller="OverviewCtrl" id="overview">
             <h2>{{project.name}}</h2>
             <div>
@@ -57,8 +68,12 @@
                 </tr>
             </table>
         </div>
-        
-    </section>
+    </script>
+    <script type="text/ng-template" id="composer_json.tpl.html">
+        <div ng-controller="ComposerJsonCtrl">
+            <pre>{{file}}</pre>
+        </div>
+    </script>
     <footer>
         
     </footer>

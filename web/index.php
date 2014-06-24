@@ -48,6 +48,7 @@ $app['controllers.simpleajax'] = function ($app)
 $app->get('/', 'controllers.main:indexAction');
 $app->get('/api/', 'controllers.ajax:indexAction');
 $app->get('/api/validate', 'controllers.simpleajax:validateAction');
+$app->get('/api/composer.json', 'controllers.simpleajax:composerJsonAction');
 
 // Run it!
 $app->run();

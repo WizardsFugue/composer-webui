@@ -63,4 +63,14 @@ class SimpleAjaxController
         );
         return $validationResult;
     }
+    
+    
+    public function composerJsonAction()
+    {
+        $file = 'composer.json';
+        $result = array(
+            'file' => file_get_contents($file),
+        );
+        return JsonResponse::create($result);
+    }
 }
