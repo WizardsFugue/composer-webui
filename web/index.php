@@ -21,12 +21,24 @@ $app['io'] = function()
     return $io;
 };
 
+$app['composer_file'] = function()
+{
+    $file = realpath(__DIR__.'/composer.json');
+    if( !file_exists($file) ){
+        $file = __DIR__ . '/../composer.json';
+    }
+    return $file;
+};
+
 
 // Services
 $app['composer'] = function($app)
 {
     $factory = new Factory;
-    return $factory->create($app['io']);
+    return $factory->create(
+        $app['io'],
+        $app['composer_file']
+    );
 };
 
 $app['controllers.main'] = function ($app)
@@ -41,7 +53,7 @@ $app['controllers.ajax'] = function ($app)
 
 $app['controllers.simpleajax'] = function ($app)
 {
-    return new SimpleAjaxController();
+    return new SimpleAjaxController($app['composer_file']);
 };
 
 // Routes
