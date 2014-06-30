@@ -29,6 +29,7 @@ composerWebuiApp.controller('ComposerJsonCtrl', function ($scope, $http) {
 
     $http.get('api/composer.json').success(function(data) {
         $scope.file  = data.file;
+        $scope.filepath  = data.filepath;
     });
 })
 

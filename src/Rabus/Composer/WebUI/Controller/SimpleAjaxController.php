@@ -70,6 +70,7 @@ class SimpleAjaxController
     {
         $result = array(
             'file' => file_get_contents($this->composerFile),
+            'filepath' => realpath($this->composerFile),
         );
         return JsonResponse::create($result);
     }
