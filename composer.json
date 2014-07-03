@@ -1,6 +1,7 @@
 {
     "name": "derrabus/composer-webui",
     "description": "A web interface for composer.",
+    "license": "MIT",
     "minimum-stability": "stable",
     "authors": [
         {
